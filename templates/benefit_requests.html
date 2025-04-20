@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Заявки на льготы{% endblock %}
+
+{% block content %}
+<div class="card mt-4">
+    <div class="card-body">
+<h2>Заявки на льготы</h2>
+
+<!-- Form for submitting a new benefit request -->
+<form action="/taxpayer/benefit_requests" method="POST" class="mt-3">
+    <div class="mb-3">
+        <label for="description" class="form-label">Описание заявки:</label>
+        <textarea id="description" name="description" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+</form>
+
+<!-- Display existing benefit requests -->
+<h3 class="mt-4">Ваши заявки</h3>
+<table class="table table-bordered mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Описание</th>
+            <th>Статус</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if requests %}
+            {% for request in requests %}
+            <tr>
+                <td>{{ request.id }}</td>
+                <td>{{ request.description }}</td>
+                <td>{{ request.status }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3" class="text-center">Нет заявок на льготы.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

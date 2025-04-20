@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Мои налоги{% endblock %}
+
+{% block content %}
+<div class="card mt-4">
+    <div class="card-body">
+<h2>Мои налоги</h2>
+<table class="table table-bordered mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Тип налога</th>
+            <th>Ставка (%)</th>
+            <th>Сумма (₸)</th>
+            <th>Срок оплаты</th>
+            <th>Статус</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tax in taxes %}
+        <tr>
+            <td>{{ tax.type }}</td>
+            <td>{{ tax.rate }}</td>
+            <td>{{ tax.amount }}</td>
+            <td>{{ tax.due_date }}</td>
+            <td>{{ tax.status }}</td>
+            <td>
+                {% if tax.status != 'Оплачен' %}
+                <form method="POST">
+                    <input type="hidden" name="tax_id" value="{{ tax.id }}">
+                    <button type="submit" class="button">Оплатить</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

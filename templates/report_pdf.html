@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Отчет</h2>
+    <p><strong>Собрано налогов:</strong> {{ report.total_taxes_collected }}</p>
+    <p><strong>Неоплаченные налоги:</strong> {{ report.pending_taxes }}</p>
+    <p><strong>Количество заявок на льготы:</strong> {{ report.benefit_requests }}</p>
+</body>
+</html>

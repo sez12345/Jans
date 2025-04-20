@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style_index_register.css">
+    <title>Регистрация</title>
+</head>
+<body>
+<div class="container">
+    <div class="login-box">
+        <form class="form" action="/register" method="POST">
+            <div class="logo"></div>
+            <span class="header">Регистрация</span>
+            <input type="text" name="username" placeholder="Имя пользователя" class="input" required />
+            <input type="password" name="password" placeholder="Пароль" class="input" required />
+            <select name="role" class="input" required>
+                <option value="taxpayer">Налогоплательщик</option>
+                <option value="employee">Сотрудник</option>
+            </select>
+            <button type="submit" class="button sign-in">Зарегистрироваться</button>
+        </form>
+        <p class="footer">
+            Уже есть аккаунт? <a href="/" class="link">Войти</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

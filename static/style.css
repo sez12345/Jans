@@ -1,0 +1,193 @@
+/* From Uiverse.io by Priyanshu02020 
+https://uiverse.io/Priyanshu02020/fluffy-treefrog-31*/ 
+* {
+    box-sizing: border-box;
+}
+body {
+    height: auto; /* Убираем фиксированную высоту */
+    overflow: auto; /* Разрешаем прокрутку */
+    display: block; /* Убираем центрирование */
+    background-color: #cccccc; /* Светлый фон для всего сайта */
+    font-family: Arial, sans-serif; /* Стандартный шрифт */
+}
+
+.container {
+    display: block; /* Убираем центрирование */
+    margin: 0 auto; /* Центрируем содержимое по горизонтали */
+    max-width: 1200px; /* Ограничиваем ширину */
+    padding: 20px; /* Добавляем отступы */
+    background: none; /* Убираем фон */
+    box-shadow: none; /* Убираем тени */
+    border-radius: 0; /* Убираем скругления */
+}
+
+header {
+    background-color: #343a40; /* Темный фон для хедера */
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #2d3b97;
+    color: white;
+}
+
+.content {
+    margin-top: 70px; /* Отступ для учета фиксированного хедера */
+    padding: 20px;
+}
+
+footer {
+    background-color: #4053D4;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+nav {
+    background-color: #4053D4;
+    padding: 10px;
+    position: fixed; /* Закрепляем меню в верхней части */
+    top: 0;
+    left: 0;
+    width: 100%; /* Меню занимает всю ширину */
+    z-index: 1000;
+    display: flex;
+    justify-content: center; /* Центрируем элементы меню */
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* Расстояние между элементами меню */
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2d3b97;
+    color: white;
+}
+
+main {
+    padding: 100px 20px; /* Добавляем отступ сверху, чтобы учесть фиксированное меню */
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+/* Стили для кнопок с анимацией */
+.button {
+    width: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    background: #4053D4;
+    color: white;   
+    transition: 0.3s;
+    box-shadow:
+        inset 0px 3px 6px -4px rgba(255, 255, 255, 0.6), 
+        inset 0px -3px 6px -2px rgba(0, 0, 0, 0.8);
+}
+
+.button:hover {
+    background: white; /* Цвет кнопки при наведении */
+    color: #4053D4; /* Цвет текста при наведении */
+    box-shadow:
+        inset 0px 3px 6px rgba(255, 255, 255, 0.6),
+        inset 0px -3px 6px rgba(0, 0, 0, 0.8),
+        0px 0px 8px rgba(255, 255, 255, 0.05);
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+.button:active {
+    transform: scale(0.95); /* Легкое уменьшение при нажатии */
+}
+
+.notification-item {
+    background-color: #b6c0ff; /* Light background for notifications */
+    border: 1px solid #dee2e6; /* Subtle border */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #ffffff; /* Neutral text color */
+}
+
+.notification-item:hover {
+    background-color: #e9ecef; /* Slightly darker on hover */
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card .btn {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.card .row div {
+    margin-bottom: 15px;
+}

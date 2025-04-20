@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Кабинет сотрудника{% endblock %}
+
+{% block content %}
+<div class="card mt-4">
+    <div class="card-body">
+<h1>Добро пожаловать в кабинет сотрудника!</h1>
+<p>Вы можете управлять налогами, обрабатывать заявки и генерировать отчеты.</p>
+<ul>
+    <li><a href="/employee/manage_taxes">Управление налогами</a></li>
+    <li><a href="/employee/process_benefits">Обработка заявок</a></li>
+    <li><a href="/employee/reports">Генерация отчетов</a></li>
+</ul>
+{% endblock %}

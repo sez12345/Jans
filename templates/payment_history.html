@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}История платежей{% endblock %}
+
+{% block content %}
+<div class="card mt-4">
+    <div class="card-body">
+<h2>История платежей</h2>
+<table class="table table-bordered mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Дата</th>
+            <th>Тип налога</th>
+            <th>Сумма</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if history %}
+            {% for payment in history %}
+            <tr>
+                <td>{{ payment.date }}</td>
+                <td>{{ payment.type }}</td>
+                <td>{{ payment.amount }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3" class="text-center">Нет записей об оплате.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

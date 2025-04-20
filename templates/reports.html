@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Генерация отчетов{% endblock %}
+
+{% block content %}
+<div class="card mt-4">
+    <div class="card-body text-center">
+        <!-- Add the logo -->
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
+        <h2>Генерация отчетов</h2>
+        <p><strong>Собрано налогов:</strong> {{ report.total_taxes_collected }}</p>
+        <p><strong>Неоплаченные налоги:</strong> {{ report.pending_taxes }}</p>
+        <p><strong>Количество заявок на льготы:</strong> {{ report.benefit_requests }}</p>
+
+        <!-- Button to download the static report -->
+        <form action="{{ url_for('download_report') }}" method="get">
+            <button type="submit" class="button">Скачать отчет в PDF</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
