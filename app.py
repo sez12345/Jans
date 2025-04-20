@@ -308,21 +308,22 @@ def register():
         password = request.form['password']
         role = request.form['role']
 
-        # Check if the username already exists
+        # Проверка на существование пользователя
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             flash(f"Пользователь с именем '{username}' уже существует. Пожалуйста, выберите другое имя.", "error")
             return redirect(url_for('register'))
 
-        # Create a new user
+        # Создание нового пользователя
         user = User(username=username, role=role)
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
 
         flash("Регистрация прошла успешно! Теперь вы можете войти.", "success")
-        return redirect(url_for('index'))
+        return redirect(url_for('login'))  # Перенаправление на страницу логина
     return render_template('register.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -330,16 +331,16 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        # Check if the user exists
+        # Проверка пользователя
         user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
             session['user_id'] = user.id
             session['role'] = user.role
-            return redirect(url_for('home'))  # Redirect to home after login
+            flash('Вы успешно вошли!', 'success')
+            return redirect(url_for('home'))  # Перенаправление на главную страницу
 
-        # Flash error message for invalid credentials
-        flash("Неверное имя пользователя или пароль", "error")
-        return redirect(url_for('index'))
+        flash('Неверное имя пользователя или пароль.', 'error')
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 if __name__ == '__main__':
