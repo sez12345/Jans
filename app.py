@@ -307,31 +307,40 @@ def register():
         username = request.form['username']
         password = request.form['password']
         role = request.form['role']
-        # Проверка на существующего пользователя
-        if User.query.filter_by(username=username).first():
-            flash("Пользователь с таким именем уже существует", "error")  # Flash error message
+
+        # Check if the username already exists
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            flash(f"Пользователь с именем '{username}' уже существует. Пожалуйста, выберите другое имя.", "error")
             return redirect(url_for('register'))
-        # Создание нового пользователя
+
+        # Create a new user
         user = User(username=username, role=role)
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
-        flash("Регистрация прошла успешно! Теперь вы можете войти.", "success")  # Flash success message
+
+        flash("Регистрация прошла успешно! Теперь вы можете войти.", "success")
         return redirect(url_for('index'))
     return render_template('register.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
-    # Проверка пользователя в базе данных
-    user = User.query.filter_by(username=username).first()
-    if user and user.check_password(password):
-        session['user_id'] = user.id
-        session['role'] = user.role
-        return redirect(url_for('home'))  # Redirect to home after login
-    flash("Неверное имя пользователя или пароль", "error")  # Flash error message
-    return redirect(url_for('index'))
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        # Check if the user exists
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(password):
+            session['user_id'] = user.id
+            session['role'] = user.role
+            return redirect(url_for('home'))  # Redirect to home after login
+
+        # Flash error message for invalid credentials
+        flash("Неверное имя пользователя или пароль", "error")
+        return redirect(url_for('index'))
+    return render_template('index.html')
 
 if __name__ == '__main__':
     from os import environ
